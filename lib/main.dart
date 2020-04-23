@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: Search(),
+      home: View(),
     );
   }
 }
@@ -36,136 +36,177 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(
         title: new Text("Doctor Detail List"),
         leading: GestureDetector(
-          onTap: (){Navigator.of(context)
-              .push(MaterialPageRoute(
-              builder: (context) =>Search()
-          ));},
+          onTap: (){
+          },
           child: Icon(
             Icons.menu
           ),
         ),
       ),
-      body: ListPage(),
+      body: Cardiologists(),
     );
   }
 
   }
- class Search extends StatefulWidget {
-   @override
-   _Search createState() => new _Search();
- }
- class _Search extends State<Search>{
-  var queryResultSet =[];
-  var tempSearchStore =[];
+class MyHomePage1 extends StatefulWidget {
+  MyHomePage1({Key key, this.title}) : super(key: key);
 
-  initiateSearch(value){
-    if(value.lenght == 0){
-      setState((){
-        queryResultSet = [];
-        tempSearchStore = [];
-      });
-    }
-    var capitalizedValue = value.substring(0,1).toUpperCase() + value.substring(1);
-    if(queryResultSet.length == 0 && value.length == 1){
-      SearchService().searchByName(value).then((QuerySnapshot docs){
-        for(int i = 0; i < docs.documents.length; i++){
-          queryResultSet.add(docs.documents[i].data);
-        }
-      });
-    }
-    else{
-      tempSearchStore = [];
-      queryResultSet.forEach((element){
-        if(element['title'].startsWith(capitalizedValue)){
-          setState((){
-            tempSearchStore.add(element);
-          });
-        }
-      });
-    }
-  }
-  @override
-   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(title: Text("Search"),
-      leading: GestureDetector(
-        onTap: (){Navigator.of(context)
-            .push(MaterialPageRoute(
-            builder: (context) =>MyHomePage()
-        ));},
-        child: Icon(
-          Icons.home
-        ),
-      ),
-      ),
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: TextField(
-              onChanged: (val){
-                initiateSearch(val);
-              },
-              decoration: InputDecoration(
-                prefixIcon: IconButton(
-                  color: Colors.black,
-                  icon: Icon(Icons.arrow_back),
-                  iconSize: 20.0,
-                  onPressed: (){
-                    Navigator.of(context).pop();
-                  },
-                ),
-                contentPadding: EdgeInsets.only(left: 25.0),
-                hintText: 'Search by name',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(4.0)
-                )
-              ),
-            ),
-          ),
-          SizedBox(height: 10.0,),
-          GridView.count(
-            padding: EdgeInsets.only(left: 10.0,right: 10.0),
-            crossAxisCount: 2,
-            crossAxisSpacing: 4.0,
-            mainAxisSpacing: 4.0,
-            primary: false,
-            shrinkWrap: true,
-            children: tempSearchStore.map((element){
-              return buildResultCard(element);
-            }).toList())
-        ]));
-  }
- }
- Widget buildResultCard(data){
-  return Card(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-    elevation: 2.0,
-    child: Container(
-      child: Center(
-        child: Text(data['title'],
-        textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20.0,
-          ),
-        )
+  final String title;
 
-      )
-    )
-  );
- }
-class ListPage extends StatefulWidget {
   @override
-  _ListPageState createState() => _ListPageState();
+  _MyHomePageState1 createState() => _MyHomePageState1();
 }
 
-class _ListPageState extends State<ListPage> {
+class _MyHomePageState1 extends State<MyHomePage1> {
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Name of the Doctors"),
+        leading: GestureDetector(
+          onTap: (){
+          },
+          child: Icon(
+              Icons.menu
+          ),
+        ),
+      ),
+      body: Cardiologists(),
+    );
+  }
+
+}
+class MyHomePage2 extends StatefulWidget {
+  MyHomePage2({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState2 createState() => _MyHomePageState2();
+}
+
+class _MyHomePageState2 extends State<MyHomePage2> {
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Name of the Doctors"),
+        leading: GestureDetector(
+          onTap: (){
+          },
+          child: Icon(
+              Icons.menu
+          ),
+        ),
+      ),
+      body: Gastroenterologists(),
+    );
+  }
+
+}
+class MyHomePage3 extends StatefulWidget {
+  MyHomePage3({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState3 createState() =>  _MyHomePageState3();
+}
+
+class  _MyHomePageState3 extends State<MyHomePage3> {
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Name of the Doctors"),
+        leading: GestureDetector(
+          onTap: (){
+          },
+          child: Icon(
+              Icons.menu
+          ),
+        ),
+      ),
+      body: FamilyPhysicians(),
+    );
+  }
+
+}
+class MyHomePage4 extends StatefulWidget {
+  MyHomePage4({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState4 createState() =>  _MyHomePageState4();
+}
+
+class  _MyHomePageState4 extends State<MyHomePage4> {
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Name of the Doctors"),
+        leading: GestureDetector(
+          onTap: (){
+          },
+          child: Icon(
+              Icons.menu
+          ),
+        ),
+      ),
+      body: Endocrinologists(),
+    );
+  }
+}
+class MyHomePage5 extends StatefulWidget {
+  MyHomePage5({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState5 createState() =>  _MyHomePageState5();
+}
+
+class  _MyHomePageState5 extends State<MyHomePage5> {
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Name of the Doctors"),
+        leading: GestureDetector(
+          onTap: (){
+          },
+          child: Icon(
+              Icons.menu
+          ),
+        ),
+      ),
+      body: Dermatologists(),
+    );
+  }
+}
+
+class Cardiologists extends StatefulWidget {
+  @override
+  _CardiologistsState createState() => _CardiologistsState();
+}
+
+class _CardiologistsState extends State<Cardiologists> {
   Future _data;
   Future getPosts() async{
     var firestore = Firestore.instance;
-    QuerySnapshot qn = await firestore.collection("doctors").getDocuments();
+    QuerySnapshot qn = await firestore.collection("doctors").where("set",isEqualTo: "Cardiologists").getDocuments();
     return qn.documents;
   }
   navigateToDetail(DocumentSnapshot doctor){
@@ -194,8 +235,10 @@ class _ListPageState extends State<ListPage> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (_, index) {
                   return ListTile(
+
                     title: Text(snapshot.data[index].data["title"]),
                     onTap: () => navigateToDetail(snapshot.data[index]),
+
                   );
 
                 });
@@ -204,6 +247,209 @@ class _ListPageState extends State<ListPage> {
     );
   }
 }
+class Gastroenterologists extends StatefulWidget {
+  @override
+  _GastroenterologistsState createState() => _GastroenterologistsState();
+}
+
+class _GastroenterologistsState extends State<Gastroenterologists> {
+  Future _data;
+  Future getPosts() async{
+    var firestore = Firestore.instance;
+    QuerySnapshot qn = await firestore.collection("doctors").where("set",isEqualTo: "Gastroenterologists").getDocuments();
+    return qn.documents;
+  }
+  navigateToDetail(DocumentSnapshot doctor){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(doctor: doctor,)));
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _data = getPosts();
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: FutureBuilder(
+          future: _data,
+          builder: (_,snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: Text("Loading.."),
+              );
+            } else {
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (_, index) {
+                    return ListTile(
+
+                      title: Text(snapshot.data[index].data["title"]),
+                      onTap: () => navigateToDetail(snapshot.data[index]),
+
+                    );
+
+                  });
+            }
+          }),
+    );
+  }
+}
+
+class FamilyPhysicians extends StatefulWidget {
+  @override
+  _FamilyPhysiciansState createState() => _FamilyPhysiciansState();
+}
+
+class _FamilyPhysiciansState extends State<FamilyPhysicians> {
+  Future _data;
+  Future getPosts() async{
+    var firestore = Firestore.instance;
+    QuerySnapshot qn = await firestore.collection("doctors").where("set",isEqualTo: "Family Physicians").getDocuments();
+    return qn.documents;
+  }
+  navigateToDetail(DocumentSnapshot doctor){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(doctor: doctor,)));
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _data = getPosts();
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: FutureBuilder(
+          future: _data,
+          builder: (_,snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: Text("Loading.."),
+              );
+            } else {
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (_, index) {
+                    return ListTile(
+
+                      title: Text(snapshot.data[index].data["title"]),
+                      onTap: () => navigateToDetail(snapshot.data[index]),
+
+                    );
+
+                  });
+            }
+          }),
+    );
+  }
+}
+class Endocrinologists extends StatefulWidget {
+  @override
+  _EndocrinologistsState createState() =>  _EndocrinologistsState();
+}
+
+class  _EndocrinologistsState extends State<Endocrinologists> {
+  Future _data;
+  Future getPosts() async{
+    var firestore = Firestore.instance;
+    QuerySnapshot qn = await firestore.collection("doctors").where("set",isEqualTo: "Endocrinologists").getDocuments();
+    return qn.documents;
+  }
+  navigateToDetail(DocumentSnapshot doctor){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(doctor: doctor,)));
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _data = getPosts();
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: FutureBuilder(
+          future: _data,
+          builder: (_,snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: Text("Loading.."),
+              );
+            } else {
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (_, index) {
+                    return ListTile(
+
+                      title: Text(snapshot.data[index].data["title"]),
+                      onTap: () => navigateToDetail(snapshot.data[index]),
+
+                    );
+
+                  });
+            }
+          }),
+    );
+  }
+}
+
+class Dermatologists extends StatefulWidget {
+  @override
+  _DermatologistsState createState() =>  _DermatologistsState();
+}
+
+class  _DermatologistsState extends State<Dermatologists> {
+  Future _data;
+  Future getPosts() async{
+    var firestore = Firestore.instance;
+    QuerySnapshot qn = await firestore.collection("doctors").where("set",isEqualTo: "Dermatologists").getDocuments();
+    return qn.documents;
+  }
+  navigateToDetail(DocumentSnapshot doctor){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(doctor: doctor,)));
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _data = getPosts();
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: FutureBuilder(
+          future: _data,
+          builder: (_,snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: Text("Loading.."),
+              );
+            } else {
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (_, index) {
+                    return ListTile(
+
+                      title: Text(snapshot.data[index].data["title"]),
+                      onTap: () => navigateToDetail(snapshot.data[index]),
+
+                    );
+
+                  });
+            }
+          }),
+    );
+  }
+}
+
 class DetailPage extends StatefulWidget {
 
   final DocumentSnapshot doctor;
@@ -221,13 +467,106 @@ class _DetailPageState extends State<DetailPage> {
       ),
       body: Container(
       child: Card(
-        child: ListTile(
-          title: Text(widget.doctor.data["title"]),
-          subtitle: Text(widget.doctor.data["content"]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+
+            Text("Specilization :" + widget.doctor.data["set"]),
+            Text("Hospital :" + widget.doctor.data["Hospital"]),
+            Text("Details :" + widget.doctor.data["content"]),
+          ],
         ),
+
       ),
       ),
     );
   }
 }
+
+class View extends StatefulWidget {
+  View({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _ViewState createState() => _ViewState();
+
+}
+
+class _ViewState extends State<View> {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Specializations"),
+        leading: GestureDetector(
+          onTap: (){
+
+          },
+          child: Icon(
+              Icons.menu
+          ),
+        ),
+      ),
+     body: Center(
+       child: Column(
+         mainAxisSize: MainAxisSize.min,
+         children: <Widget>[
+           const SizedBox(height: 30),
+              RaisedButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage1()),);
+                },
+                child: const Text(
+                    'Cardiologists',
+                style: TextStyle(fontSize: 20),
+                ),
+              ),
+           const SizedBox(height: 30,width: 80),
+              RaisedButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage3()),);
+                },
+                child: const Text(
+                  'Family Physicians',
+                 style: TextStyle(fontSize: 20),
+                ),
+              ),
+           const SizedBox(height: 30,width: 80),
+           RaisedButton(
+             onPressed: (){
+               Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage5()),);
+             },
+             child: const Text(
+               'Dermatologists',
+               style: TextStyle(fontSize: 20),
+             ),
+           ),
+           const SizedBox(height: 30,width: 80),
+           RaisedButton(
+             onPressed: (){
+               Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage4()),);
+             },
+             child: const Text(
+               'Endocrinologists',
+               style: TextStyle(fontSize: 20),
+             ),
+           ),
+           const SizedBox(height: 30,width: 80),
+           RaisedButton(
+             onPressed: (){
+               Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage2()),);
+             },
+             child: const Text(
+               'Gastroenterologists',
+               style: TextStyle(fontSize: 20),
+             ),
+           )
+         ],
+       ),
+     ),
+    );
+  }
+}
+
 
