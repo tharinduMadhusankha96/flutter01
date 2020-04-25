@@ -1,6 +1,7 @@
 import 'package:ctse02/searchservice.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -65,11 +66,17 @@ class _MyHomePageState1 extends State<MyHomePage1> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Name of the Doctors"),
+        backgroundColor: Colors.deepOrangeAccent,
         leading: GestureDetector(
           onTap: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context)=>MyApp()
+                ));
           },
           child: Icon(
-              Icons.menu
+              Icons.arrow_back
           ),
         ),
       ),
@@ -95,11 +102,17 @@ class _MyHomePageState2 extends State<MyHomePage2> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Name of the Doctors"),
+        backgroundColor: Colors.deepOrangeAccent,
         leading: GestureDetector(
           onTap: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context)=>MyApp()
+                ));
           },
           child: Icon(
-              Icons.menu
+              Icons.arrow_back
           ),
         ),
       ),
@@ -125,11 +138,17 @@ class  _MyHomePageState3 extends State<MyHomePage3> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Name of the Doctors"),
+        backgroundColor: Colors.deepOrangeAccent,
         leading: GestureDetector(
           onTap: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context)=>MyApp()
+                ));
           },
           child: Icon(
-              Icons.menu
+              Icons.arrow_back
           ),
         ),
       ),
@@ -155,11 +174,17 @@ class  _MyHomePageState4 extends State<MyHomePage4> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Name of the Doctors"),
+        backgroundColor: Colors.deepOrangeAccent,
         leading: GestureDetector(
           onTap: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context)=>MyApp()
+                ));
           },
           child: Icon(
-              Icons.menu
+              Icons.arrow_back
           ),
         ),
       ),
@@ -184,11 +209,17 @@ class  _MyHomePageState5 extends State<MyHomePage5> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Name of the Doctors"),
+        backgroundColor: Colors.deepOrangeAccent,
         leading: GestureDetector(
           onTap: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context)=>MyApp()
+                ));
           },
           child: Icon(
-              Icons.menu
+              Icons.arrow_back
           ),
         ),
       ),
@@ -223,6 +254,7 @@ class _CardiologistsState extends State<Cardiologists> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.black12,
       child: FutureBuilder(
         future: _data,
         builder: (_,snapshot) {
@@ -236,7 +268,7 @@ class _CardiologistsState extends State<Cardiologists> {
                 itemBuilder: (_, index) {
                   return ListTile(
 
-                    title: Text(snapshot.data[index].data["title"]),
+                    title: Text(snapshot.data[index].data["title"],style: TextStyle(fontWeight:FontWeight.bold, fontSize:20 ),),
                     onTap: () => navigateToDetail(snapshot.data[index]),
 
                   );
@@ -273,6 +305,7 @@ class _GastroenterologistsState extends State<Gastroenterologists> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.black12,
       child: FutureBuilder(
           future: _data,
           builder: (_,snapshot) {
@@ -286,7 +319,7 @@ class _GastroenterologistsState extends State<Gastroenterologists> {
                   itemBuilder: (_, index) {
                     return ListTile(
 
-                      title: Text(snapshot.data[index].data["title"]),
+                      title: Text(snapshot.data[index].data["title"],style: TextStyle(fontWeight:FontWeight.bold, fontSize:20 ),),
                       onTap: () => navigateToDetail(snapshot.data[index]),
 
                     );
@@ -324,6 +357,7 @@ class _FamilyPhysiciansState extends State<FamilyPhysicians> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.black12,
       child: FutureBuilder(
           future: _data,
           builder: (_,snapshot) {
@@ -337,7 +371,7 @@ class _FamilyPhysiciansState extends State<FamilyPhysicians> {
                   itemBuilder: (_, index) {
                     return ListTile(
 
-                      title: Text(snapshot.data[index].data["title"]),
+                      title: Text(snapshot.data[index].data["title"],style: TextStyle(fontWeight:FontWeight.bold, fontSize:20 ),),
                       onTap: () => navigateToDetail(snapshot.data[index]),
 
                     );
@@ -374,6 +408,7 @@ class  _EndocrinologistsState extends State<Endocrinologists> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.black12,
       child: FutureBuilder(
           future: _data,
           builder: (_,snapshot) {
@@ -387,7 +422,7 @@ class  _EndocrinologistsState extends State<Endocrinologists> {
                   itemBuilder: (_, index) {
                     return ListTile(
 
-                      title: Text(snapshot.data[index].data["title"]),
+                      title: Text(snapshot.data[index].data["title"],style: TextStyle(fontWeight:FontWeight.bold, fontSize:20 ),),
                       onTap: () => navigateToDetail(snapshot.data[index]),
 
                     );
@@ -425,6 +460,7 @@ class  _DermatologistsState extends State<Dermatologists> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.black12,
       child: FutureBuilder(
           future: _data,
           builder: (_,snapshot) {
@@ -436,13 +472,13 @@ class  _DermatologistsState extends State<Dermatologists> {
               return ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (_, index) {
+
                     return ListTile(
 
-                      title: Text(snapshot.data[index].data["title"]),
+                      title: Text(snapshot.data[index].data["title"],style: TextStyle(fontWeight:FontWeight.bold, fontSize:20 ),),
                       onTap: () => navigateToDetail(snapshot.data[index]),
 
                     );
-
                   });
             }
           }),
@@ -464,16 +500,20 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.doctor.data["title"]),
+        backgroundColor: Colors.deepOrangeAccent,
       ),
       body: Container(
+
+
       child: Card(
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
 
-            Text("Specilization :" + widget.doctor.data["set"]),
-            Text("Hospital :" + widget.doctor.data["Hospital"]),
-            Text("Details :" + widget.doctor.data["content"]),
+            Text("Specilization :" + widget.doctor.data["set"],style: TextStyle(fontWeight:FontWeight.bold, fontSize:20 ),),
+            Text("Hospital :" + widget.doctor.data["Hospital"],style: TextStyle(fontWeight:FontWeight.bold, fontSize:20 ),),
+            Text("Details :" + widget.doctor.data["content"],style: TextStyle(fontWeight:FontWeight.bold, fontSize:20 ),),
           ],
         ),
 
@@ -498,32 +538,41 @@ class _ViewState extends State<View> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Specializations"),
+        title: new Text("Specializations" ),
+        backgroundColor: Colors.deepOrangeAccent,
         leading: GestureDetector(
           onTap: (){
 
           },
           child: Icon(
-              Icons.menu
+              Icons.home
           ),
         ),
       ),
-     body: Center(
-       child: Column(
+
+     body: new Padding(
+       padding: const EdgeInsets.all(20.0),
+       child:new Column(
+         mainAxisAlignment: MainAxisAlignment.center,
+         crossAxisAlignment: CrossAxisAlignment.stretch,
          mainAxisSize: MainAxisSize.min,
          children: <Widget>[
-           const SizedBox(height: 30),
-              RaisedButton(
+
+             new RaisedButton(
+                shape: StadiumBorder(),
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage1()),);
                 },
                 child: const Text(
                     'Cardiologists',
+
                 style: TextStyle(fontSize: 20),
                 ),
               ),
-           const SizedBox(height: 30,width: 80),
-              RaisedButton(
+           new Padding(padding: const EdgeInsets.all(10.0)),
+
+             new RaisedButton(
+                shape: StadiumBorder(),
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage3()),);
                 },
@@ -532,8 +581,10 @@ class _ViewState extends State<View> {
                  style: TextStyle(fontSize: 20),
                 ),
               ),
-           const SizedBox(height: 30,width: 80),
-           RaisedButton(
+           new Padding(padding: const EdgeInsets.all(10.0)),
+
+          new RaisedButton(
+             shape: StadiumBorder(),
              onPressed: (){
                Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage5()),);
              },
@@ -542,8 +593,10 @@ class _ViewState extends State<View> {
                style: TextStyle(fontSize: 20),
              ),
            ),
-           const SizedBox(height: 30,width: 80),
-           RaisedButton(
+           new Padding(padding: const EdgeInsets.all(10.0)),
+
+           new RaisedButton(
+             shape: StadiumBorder(),
              onPressed: (){
                Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage4()),);
              },
@@ -552,21 +605,259 @@ class _ViewState extends State<View> {
                style: TextStyle(fontSize: 20),
              ),
            ),
-           const SizedBox(height: 30,width: 80),
-           RaisedButton(
+           new Padding(padding: const EdgeInsets.all(10.0)),
+
+           new RaisedButton(
+             shape: StadiumBorder(),
              onPressed: (){
                Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage2()),);
              },
-             child: const Text(
+             child: new Text(
                'Gastroenterologists',
                style: TextStyle(fontSize: 20),
              ),
-           )
+           ),
+           new Padding(padding: const EdgeInsets.all(10.0)),
+           new RaisedButton(
+             shape: StadiumBorder(),
+             onPressed: (){
+               Navigator.push(context, MaterialPageRoute(builder: (context)=>DoctorDetails()),);
+             },
+             child: new Text(
+               'Doctor Details',
+               style: TextStyle(fontSize: 20),
+             ),
+           ),
+           new Padding(padding: const EdgeInsets.all(10.0))
          ],
        ),
      ),
     );
   }
 }
+
+class DoctorDetails extends StatefulWidget {
+  @override
+  _DoctorDetailsState createState() => _DoctorDetailsState();
+}
+
+class _DoctorDetailsState extends State<DoctorDetails> {
+
+  String doctorName, doctorSpe, doctorHospital, doctorContent;
+
+  getDoctorName(name){
+    this.doctorName = name;
+  }
+  getDoctorSpe(specialization){
+    this.doctorSpe = specialization;
+  }
+  getDoctorHospital(hospital){
+    this.doctorHospital = hospital;
+  }
+  getDoctorContent(content){
+    this.doctorContent = content;
+  }
+  createData(){
+    DocumentReference documentReference =
+        Firestore.instance.collection("doctors").document(doctorName);
+
+    Map<String, dynamic> doctors = {
+      "title" : doctorName,
+      "set" : doctorSpe,
+      "Hospital" : doctorHospital,
+      "content" : doctorContent
+    };
+    documentReference.setData(doctors).whenComplete((){
+      Fluttertoast.showToast(
+        msg: "$doctorName Created",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+      );
+
+    });
+  }
+  readData(){
+    DocumentReference documentReference =
+        Firestore.instance.collection("doctors").document(doctorName);
+    documentReference.get().then((datasnapshot){
+      print(datasnapshot.data["title"]);
+      print(datasnapshot.data["set"]);
+      print(datasnapshot.data["Hospital"]);
+      print(datasnapshot.data["content"]);
+    });
+  }
+  updateData(){
+    DocumentReference documentReference =
+    Firestore.instance.collection("doctors").document(doctorName);
+
+    Map<String, dynamic> doctors = {
+      "title" : doctorName,
+      "set" : doctorSpe,
+      "Hospital" : doctorHospital,
+      "content" : doctorContent
+    };
+    documentReference.setData(doctors).whenComplete((){
+      Fluttertoast.showToast(
+          msg: "$doctorName Updated",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    });
+  }
+  deleteData(){
+    DocumentReference documentReference=
+        Firestore.instance.collection("doctors").document(doctorName);
+
+    documentReference.delete().whenComplete((){
+      Fluttertoast.showToast(
+          msg: "$doctorName Deleted",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Doctor Details"),
+        backgroundColor: Colors.deepOrangeAccent,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(bottom:6.0),
+            child:TextFormField(
+            decoration: InputDecoration(
+              labelText: "Name",
+              fillColor: Colors.white,
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.blue,
+                width: 2.0
+                )
+              ),
+            ),
+              onChanged: (String name){
+                getDoctorName(name);
+              },
+          )
+          ),
+          Padding(
+              padding: EdgeInsets.only(bottom:6.0),
+              child:TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Specialization",
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue,
+                          width: 2.0
+                      )
+                  ),
+                ),
+                onChanged: (String specialization){
+                  getDoctorSpe(specialization);
+
+                },
+              )
+          ),
+          Padding(
+              padding: EdgeInsets.only(bottom:6.0),
+              child:TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Hospital",
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue,
+                          width: 2.0
+                      )
+                  ),
+                ),
+                onChanged: (String hospital){
+                  getDoctorHospital(hospital);
+
+                },
+              )
+          ),
+          Padding(
+              padding: EdgeInsets.only(bottom:6.0),
+              child:TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Content",
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue,
+                          width: 2.0
+                      )
+                  ),
+                ),
+                onChanged: (String content){
+                  getDoctorContent(content);
+
+                },
+              )
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              RaisedButton(
+                color: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)
+                ),
+                child: Text("ADD"),
+                textColor: Colors.white,
+                onPressed: (){
+                  createData();
+                },
+              ),
+
+              RaisedButton(
+                color: Colors.orange,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16)
+                ),
+                child: Text("UPDATE"),
+                textColor: Colors.white,
+                onPressed: (){
+                  updateData();
+                },
+              ),
+              RaisedButton(
+                color: Colors.red,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16)
+                ),
+                child: Text("DELETE"),
+                textColor: Colors.white,
+                onPressed: (){
+                  deleteData();
+                },
+              )
+            ],
+          ),
+
+        ],
+      ),
+    ));
+
+  }
+}
+
+
 
 
