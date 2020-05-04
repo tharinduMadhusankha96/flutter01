@@ -1,21 +1,29 @@
 import 'package:ctse02/searchservice.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image/image.dart';
+import 'signuppage.dart';
+import 'loginpage.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return new MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
       ),
-      home: View(),
+      home: LoginPage(),
+      routes: <String, WidgetBuilder>{
+        '/landingpage' :(BuildContext context) =>new MyApp(),
+        '/signup': (BuildContext context) => new SignupPage(),
+        '/viewPage': (BuildContext context) => new View()
+      },
     );
   }
 }
@@ -598,12 +606,24 @@ class _ViewState extends State<View> {
         backgroundColor: Colors.indigoAccent,
         leading: GestureDetector(
           onTap: (){
-
           },
           child: Icon(
               Icons.home
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: (){
+              FirebaseAuth.instance.signOut().then((value){
+                Navigator.of(context)
+                    .pushReplacementNamed('/landingPage');
+              }).catchError((e){
+                print(e);
+              });
+            },
+          )
+        ],
       ),
         body:  new Padding(
                 padding: const EdgeInsets.all(20.0),
